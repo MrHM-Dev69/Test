@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 620" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="38%" r="60%">
+      <stop offset="0%" stop-color="#7621B0" stop-opacity="0.55" />
+      <stop offset="55%" stop-color="#B600A8" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#0C0C0C" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8A919B" />
+      <stop offset="45%" stop-color="#646973" />
+      <stop offset="100%" stop-color="#2B2E33" />
+    </linearGradient>
+
+    <linearGradient id="headGrad" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#DDE8EF" />
+      <stop offset="40%" stop-color="#BBCCD7" />
+      <stop offset="75%" stop-color="#8892A0" />
+      <stop offset="100%" stop-color="#4B505A" />
+    </linearGradient>
+
+    <linearGradient id="rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BE4C00" />
+      <stop offset="50%" stop-color="#B600A8" />
+      <stop offset="100%" stop-color="#18011F" />
+    </linearGradient>
+
+    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" />
+    </filter>
+  </defs>
+
+  <ellipse cx="250" cy="230" rx="230" ry="230" fill="url(#glow)" />
+
+  <path
+    d="M100 610 C100 460 150 380 250 380 C350 380 400 460 400 610 Z"
+    fill="url(#bodyGrad)"
+  />
+  <path
+    d="M100 610 C100 460 150 380 250 380 C350 380 400 460 400 610"
+    stroke="url(#rim)"
+    stroke-width="4"
+    stroke-linecap="round"
+    opacity="0.5"
+  />
+
+  <path
+    d="M170 300 L170 400 C170 440 330 440 330 400 L330 300 Z"
+    fill="url(#bodyGrad)"
+  />
+
+  <ellipse cx="250" cy="205" rx="112" ry="128" fill="url(#headGrad)" />
+  <path
+    d="M138 205 C138 130 186 77 250 77"
+    stroke="url(#rim)"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.7"
+  />
+
+  <path
+    d="M140 165 C150 90 200 55 250 55 C312 55 362 100 362 165 C362 120 320 90 275 100 C300 115 305 145 300 160 C270 120 210 115 175 150 C168 158 150 158 140 165 Z"
+    fill="url(#bodyGrad)"
+  />
+
+  <circle cx="205" cy="210" r="7" fill="#2B2E33" opacity="0.55" />
+  <circle cx="295" cy="210" r="7" fill="#2B2E33" opacity="0.55" />
+  <path
+    d="M225 255 Q250 268 275 255"
+    stroke="#2B2E33"
+    stroke-width="5"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.4"
+  />
+
+  <rect x="196" y="588" width="108" height="26" rx="13" fill="url(#accentGrad)" filter="url(#softBlur)" opacity="0.8" />
+</svg>

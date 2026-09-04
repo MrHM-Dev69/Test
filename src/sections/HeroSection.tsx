@@ -1,11 +1,9 @@
 import FadeIn from '../components/FadeIn';
 import Magnet from '../components/Magnet';
 import ContactButton from '../components/ContactButton';
+import heroPortrait from '../assets/hero-portrait.svg';
 
 const NAV_LINKS = ['About', 'Price', 'Projects', 'Contact'];
-
-const PORTRAIT_URL =
-  'https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png';
 
 export default function HeroSection() {
   return (
@@ -38,7 +36,7 @@ export default function HeroSection() {
             activeTransition="transform 0.3s ease-out"
             inactiveTransition="transform 0.6s ease-in-out"
           >
-            <img src={PORTRAIT_URL} alt="Jack portrait" className="w-full h-auto" />
+            <img src={heroPortrait} alt="Jack portrait" className="w-full h-auto" />
           </Magnet>
         </FadeIn>
       </div>
