@@ -1,0 +1,39 @@
+/* ==========================================================================
+   ELEN Coffee — RTL overrides
+   Loaded only when is_rtl() (Persian sites using an RTL locale). Logical
+   properties (inset-inline-*, margin-inline-*) in the base files already
+   flip automatically; this file covers the handful of physical-property
+   exceptions and font-family swap.
+   ========================================================================== */
+
+body.is-rtl {
+	font-family: var(--font-fa);
+}
+
+body.is-rtl .hamburger,
+body.is-rtl .hamburger::before,
+body.is-rtl .hamburger::after {
+	right: 0;
+	left: auto;
+}
+
+body.is-rtl .product-card__badges {
+	inset-inline-start: var(--space-3);
+	inset-inline-end: auto;
+}
+
+body.is-rtl .flex-control-thumbs,
+body.is-rtl .contact-details__list,
+body.is-rtl .site-footer__grid {
+	direction: rtl;
+}
+
+body.is-rtl .single-product-grid form.cart,
+body.is-rtl .shop-toolbar {
+	direction: rtl;
+}
+
+body.is-rtl .woocommerce-cart table.cart th,
+body.is-rtl .woocommerce-cart table.cart td {
+	text-align: right;
+}

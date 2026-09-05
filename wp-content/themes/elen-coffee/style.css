@@ -1,0 +1,19 @@
+/*
+Theme Name: ELEN Coffee
+Theme URI: https://elencoffee.com
+Author: ELEN Coffee
+Author URI: https://elencoffee.com
+Description: Production-ready premium specialty coffee e-commerce theme for WooCommerce. Editorial, minimal, fast, secure and accessible. Built custom for the ELEN Coffee brand — no page builder, no bloat.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.6
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: elen-coffee
+Tags: e-commerce, custom-menu, featured-images, translation-ready, rtl-language-support
+*/
+
+/* All real styling lives in /assets/css/*.css and is enqueued in inc/enqueue.php
+   with correct dependency order and cache-busting versions. This file only
+   carries the required WordPress theme header above. */
