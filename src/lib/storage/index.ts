@@ -13,7 +13,10 @@ export interface StorageDriver {
 }
 
 class LocalStorageDriver implements StorageDriver {
-  private root = path.resolve(process.cwd(), env.STORAGE_LOCAL_PRIVATE_DIR);
+  // turbopackIgnore: this path is env-driven but always resolves under the
+  // project root's storage/ directory; without the ignore comment, Turbopack's
+  // static analysis traces the entire project as a potential dependency.
+  private root = path.resolve(/* turbopackIgnore: true */ process.cwd(), env.STORAGE_LOCAL_PRIVATE_DIR);
 
   private resolveSafe(key: string): string {
     // Path-traversal guard: reject any key that escapes the private root.

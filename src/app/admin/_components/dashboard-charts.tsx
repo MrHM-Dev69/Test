@@ -8,14 +8,22 @@ function formatDayLabel(iso: string) {
   return new Intl.DateTimeFormat("fa-IR", { month: "short", day: "numeric" }).format(d);
 }
 
+// Server Components can't pass functions as props to Client Components, so
+// formatting is selected by a serializable string flag rather than a
+// callback — the formatter itself lives entirely on the client side here.
+function formatValue(v: number, kind?: "toman" | "number"): string {
+  if (kind === "toman") return new Intl.NumberFormat("fa-IR").format(Math.round(v)) + " ت";
+  return new Intl.NumberFormat("fa-IR").format(v);
+}
+
 export function TrendAreaChart({
   data,
   color = "#e11d2e",
-  valueFormatter,
+  valueKind,
 }: {
   data: DaySeriesPoint[];
   color?: string;
-  valueFormatter?: (v: number) => string;
+  valueKind?: "toman" | "number";
 }) {
   const gradientId = `grad-${color.replace("#", "")}`;
   return (
@@ -41,7 +49,7 @@ export function TrendAreaChart({
           axisLine={false}
           tickLine={false}
           width={48}
-          tickFormatter={(v: number) => (valueFormatter ? valueFormatter(v) : String(v))}
+          tickFormatter={(v: number) => formatValue(v, valueKind)}
         />
         <Tooltip
           contentStyle={{
@@ -51,7 +59,7 @@ export function TrendAreaChart({
             fontSize: 12,
           }}
           labelFormatter={(l) => formatDayLabel(String(l))}
-          formatter={(value) => [valueFormatter ? valueFormatter(Number(value)) : String(value), ""]}
+          formatter={(value) => [formatValue(Number(value), valueKind), ""]}
         />
         <Area type="monotone" dataKey="value" stroke={color} fill={`url(#${gradientId})`} strokeWidth={2} />
       </AreaChart>

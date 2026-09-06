@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { NextResponse, type NextRequest } from "next/server";
 
 // Security headers + CSP applied to every response, plus a CSRF gate for
@@ -23,7 +24,7 @@ const CSRF_EXEMPT_PREFIXES = [
   "/api/auth/otp",
 ];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
@@ -39,6 +40,21 @@ export function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next();
+
+  // Ensure the CSRF cookie exists for every navigation. Cookies can only be
+  // written from middleware/proxy, Route Handlers, or Server Actions — never
+  // from a plain Server Component render — so this is the one place that
+  // guarantees every page has it, rather than each page trying (and failing)
+  // to set it itself.
+  if (!request.cookies.get("__csrf")?.value) {
+    response.cookies.set("__csrf", crypto.randomBytes(24).toString("hex"), {
+      httpOnly: false,
+      sameSite: "lax",
+      path: "/",
+      secure: process.env.NODE_ENV === "production",
+    });
+  }
+
   response.headers.set("Content-Security-Policy", CSP);
   response.headers.set("X-Frame-Options", "DENY");
   response.headers.set("X-Content-Type-Options", "nosniff");

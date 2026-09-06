@@ -55,7 +55,7 @@ export default async function AnalyticsPage() {
           <CardTitle>روند درآمد</CardTitle>
         </CardHeader>
         <CardContent>
-          <TrendAreaChart data={data.charts.revenue} color="#e11d2e" valueFormatter={(v) => formatToman(v)} />
+          <TrendAreaChart data={data.charts.revenue} color="#e11d2e" valueKind="toman" />
         </CardContent>
       </Card>
 
