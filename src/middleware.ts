@@ -17,7 +17,7 @@ const CSP = [
 
 const STATE_CHANGING_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 const CSRF_EXEMPT_PREFIXES = [
-  "/api/payments/webhook", // signed by the gateway, not the browser
+  "/api/shop/payments/webhook", // signed by the payment gateway, not the browser
   "/api/auth/login",
   "/api/auth/register",
   "/api/auth/otp",

@@ -12,6 +12,7 @@ export interface ProductListParams {
   sort?: string;
   page?: string;
   q?: string;
+  [key: string]: string | undefined;
 }
 
 export function buildProductWhere(params: ProductListParams): Prisma.ProductWhereInput {

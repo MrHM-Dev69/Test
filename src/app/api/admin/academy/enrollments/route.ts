@@ -13,13 +13,14 @@ export async function POST(req: NextRequest) {
   const parsed = adminGrantSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) return zodErrorResponse(parsed.error);
 
-  const { userId, courseId } = parsed.data;
+  const { identifier, courseId } = parsed.data;
   const [user, course] = await Promise.all([
-    prisma.user.findUnique({ where: { id: userId } }),
+    prisma.user.findFirst({ where: { OR: [{ email: identifier }, { phone: identifier }] } }),
     prisma.course.findUnique({ where: { id: courseId } }),
   ]);
-  if (!user) return jsonError("کاربر یافت نشد", 404);
+  if (!user) return jsonError("کاربری با این ایمیل یا شماره تماس یافت نشد", 404);
   if (!course) return jsonError("دوره یافت نشد", 404);
+  const userId = user.id;
 
   const existing = await prisma.enrollment.findUnique({ where: { userId_courseId: { userId, courseId } } });
   if (existing) return jsonError("این کاربر قبلا در این دوره ثبت‌نام کرده است", 409);

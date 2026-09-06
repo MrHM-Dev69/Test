@@ -67,7 +67,7 @@ export const categorySchema = z.object({
 });
 
 export const adminGrantSchema = z.object({
-  userId: z.string().trim().min(1),
+  identifier: z.string().trim().min(1), // user email or phone
   courseId: z.string().trim().min(1),
 });
 

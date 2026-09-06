@@ -29,14 +29,14 @@ export default async function AdminCategoriesPage() {
         ]}
         slugify
         items={categories}
-        renderItem={(item) => (
-          <span className="text-sm">
-            {String(item.name)}{" "}
-            <span className="text-xs text-muted">
-              ({String((item as { _count: { products: number } })._count.products)} محصول)
+        renderItem={(item) => {
+          const count = (item as unknown as { _count: { products: number } })._count.products;
+          return (
+            <span className="text-sm">
+              {String(item.name)} <span className="text-xs text-muted">({count} محصول)</span>
             </span>
-          </span>
-        )}
+          );
+        }}
       />
     </div>
   );
