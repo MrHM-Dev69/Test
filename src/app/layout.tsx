@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fa" dir="rtl" className={`${vazirmatn.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
