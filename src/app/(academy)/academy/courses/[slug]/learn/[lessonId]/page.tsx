@@ -111,7 +111,6 @@ export default async function LessonPlayerPage({
           <h2 className="text-lg font-semibold text-foreground">{lesson.title}</h2>
 
           {lesson.type === "VIDEO" && lesson.contentUrl && (
-            // eslint-disable-next-line jsx-a11y/media-has-caption
             <video
               controls
               className="w-full rounded-xl border border-border bg-black"
