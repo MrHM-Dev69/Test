@@ -20,6 +20,7 @@ export default async function AdminSalesReportsPage() {
   if (!user) redirect("/login");
   if (!canManageShop(user.role as RoleName)) return <Forbidden label="گزارش فروش" />;
 
+  // eslint-disable-next-line react-hooks/purity -- Server Component render is per-request, not memoized/re-rendered like client components
   const since = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
 
   const rows = await prisma.$queryRaw<DailyRevenueRow[]>`

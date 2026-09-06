@@ -12,6 +12,7 @@ export default async function SecurityHubPage() {
   if (!admin || !can(admin, "security.manage")) return <Forbidden label="امنیت" />;
 
   const [failedLogins24h, activeSessions, adminUsers] = await Promise.all([
+    // eslint-disable-next-line react-hooks/purity -- Server Component render is per-request, not memoized/re-rendered like client components
     prisma.loginHistory.count({ where: { success: false, createdAt: { gt: new Date(Date.now() - 24 * 60 * 60 * 1000) } } }),
     prisma.session.count({ where: { revokedAt: null, expiresAt: { gt: new Date() } } }),
     prisma.user.findMany({
