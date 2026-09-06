@@ -10,7 +10,7 @@ export default async function BannersPage() {
   const admin = await getAdminUser();
   if (!admin || !can(admin, "marketing.manage")) return <Forbidden label="بنرها" />;
 
-  const banners = await prisma.banner.findMany({ orderBy: [{ order: "asc" }, { createdAt: "desc" }] });
+  const banners = await prisma.banner.findMany({ orderBy: [{ order: "asc" }] });
 
   return (
     <div className="flex flex-col gap-6">

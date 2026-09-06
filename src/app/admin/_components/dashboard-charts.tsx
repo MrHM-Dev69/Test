@@ -51,7 +51,7 @@ export function TrendAreaChart({
             fontSize: 12,
           }}
           labelFormatter={(l) => formatDayLabel(String(l))}
-          formatter={(value: number) => [valueFormatter ? valueFormatter(value) : value, ""]}
+          formatter={(value) => [valueFormatter ? valueFormatter(Number(value)) : String(value), ""]}
         />
         <Area type="monotone" dataKey="value" stroke={color} fill={`url(#${gradientId})`} strokeWidth={2} />
       </AreaChart>
